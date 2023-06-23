@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "digs_and_dunes:block/palm_planks"
+  }
+}

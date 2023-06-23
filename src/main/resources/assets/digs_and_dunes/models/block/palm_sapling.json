@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "digs_and_dunes:block/palm_sapling"
+  }
+}

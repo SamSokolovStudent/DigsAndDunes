@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "digs_and_dunes:block/palm_pressure_plate"
+    },
+    "powered=true": {
+      "model": "digs_and_dunes:block/palm_pressure_plate_down"
+    }
+  }
+}

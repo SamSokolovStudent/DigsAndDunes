@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "digs_and_dunes:block/petrified_wood",
+    "side": "digs_and_dunes:block/petrified_wood"
+  }
+}

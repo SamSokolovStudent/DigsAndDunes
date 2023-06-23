@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "digs_and_dunes:block/palm_slab"
+    },
+    "type=double": {
+      "model": "digs_and_dunes:block/palm_planks"
+    },
+    "type=top": {
+      "model": "digs_and_dunes:block/palm_slab_top"
+    }
+  }
+}

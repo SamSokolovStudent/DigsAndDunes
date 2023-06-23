@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/flower_pot_cross",
+  "textures": {
+    "plant": "digs_and_dunes:block/palm_sapling"
+  }
+}

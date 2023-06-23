@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "digs_and_dunes:block/palm_log_top",
+    "side": "digs_and_dunes:block/palm_log"
+  }
+}

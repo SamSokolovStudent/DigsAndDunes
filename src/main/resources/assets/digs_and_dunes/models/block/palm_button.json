@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button",
+  "textures": {
+    "texture": "digs_and_dunes:block/palm_planks"
+  }
+}

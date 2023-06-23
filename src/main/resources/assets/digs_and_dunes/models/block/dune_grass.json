@@ -1,0 +1,7 @@
+{
+  "render_type": "cutout",
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "digs_and_dunes:block/dune_grass"
+  }
+}

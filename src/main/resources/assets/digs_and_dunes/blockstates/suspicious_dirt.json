@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "dusted=0": {
+      "model": "digs_and_dunes:block/suspicious_dirt_0"
+    },
+    "dusted=1": {
+      "model": "digs_and_dunes:block/suspicious_dirt_1"
+    },
+    "dusted=2": {
+      "model": "digs_and_dunes:block/suspicious_dirt_2"
+    },
+    "dusted=3": {
+      "model": "digs_and_dunes:block/suspicious_dirt_3"
+    }
+  }
+}

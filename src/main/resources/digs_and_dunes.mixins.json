@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "net.soko.digs_and_dunes.mixins",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "digs_and_dunes.refmap.json",
+  "mixins": [
+    "BrushableBlockMixin",
+    "FallingBlockMixin",
+    "FogTypeMixin"
+  ],
+  "client": [
+    "CameraMixin",
+    "FogRendererMixin"
+  ],
+  "minVersion": "0.8.5"
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "digs_and_dunes:palm_log",
+    "digs_and_dunes:palm_wood",
+    "digs_and_dunes:stripped_palm_log",
+    "digs_and_dunes:stripped_palm_wood"
+  ]
+}

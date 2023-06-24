@@ -1,4 +1,4 @@
-package net.soko.digs_and_dunes.common.worldgen.feature.generator;
+package net.soko.digs_and_dunes.common.worldgen.feature.placer;
 
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;

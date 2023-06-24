@@ -21,5 +21,11 @@
   "block.digs_and_dunes.palm_trapdoor": "Palm Trapdoor",
   "block.digs_and_dunes.palm_sapling": "Palm Sapling",
   "block.digs_and_dunes.potted_palm_sapling": "Potted Palm Sapling",
+  "screen.digs_and_dunes.pottery_table.missing_pot_or_clay": "Pot or Clay Missing",
+  "screen.digs_and_dunes.pottery_table.missing_pot_or_clay.tooltip": "You must provide a Pot or Clay in the top slot.",
+  "screen.digs_and_dunes.pottery_table.missing_dye": "Dye Missing",
+  "screen.digs_and_dunes.pottery_table.missing_dye.tooltip": "You must provide a Dye in the bottom slot to glaze the pot.",
+  "screen.digs_and_dunes.pottery_table.missing_sherd_or_brick": "Sherd or Brick Missing",
+  "screen.digs_and_dunes.pottery_table.missing_sherd_or_brick.tooltip": "You must provide a Sherd or Brick in the Sherd slots to craft the pot.",
   "itemGroup.digs_and_dunes": "Digs and Dunes"
 }

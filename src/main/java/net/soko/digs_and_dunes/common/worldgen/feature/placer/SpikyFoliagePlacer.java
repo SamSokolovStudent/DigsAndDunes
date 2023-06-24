@@ -1,14 +1,12 @@
-package net.soko.digs_and_dunes.common.worldgen.feature.generator;
+package net.soko.digs_and_dunes.common.worldgen.feature.placer;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockPos.MutableBlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.IntProvider;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelSimulatedReader;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
@@ -34,6 +32,8 @@ public class SpikyFoliagePlacer extends FoliagePlacer {
         return ModFoliagePlacerType.SPIKY_FOLIAGE_PLACER.get();
     }
 
+    //todo: make a new foliage feature placer or mixin into the existing one for leaves with distance blockState > 7
+
     @Override
     protected void createFoliage(LevelSimulatedReader levelSimulatedReader, FoliageSetter foliageSetter, RandomSource randomSource, TreeConfiguration treeConfiguration, int treeHeight, FoliageAttachment attachment, int height, int radius, int offset) {
         MutableBlockPos mutableBlockPos = attachment.pos().above(offset).mutable();
@@ -41,8 +41,8 @@ public class SpikyFoliagePlacer extends FoliagePlacer {
 
         // Compute larger radius and frond size for taller trees
         int scaledRadius = (int) (radius * treeHeight * 0.1);
-        double frondSizeFactor = 1.3; // adjust this value to increase or decrease the frond size
-
+        int minTreeHeight = 8;
+        double frondSizeFactor = 1.4 * Math.max(minTreeHeight, treeHeight) / treeHeight;
         // Compute random rotation angle
         double theta = randomSource.nextDouble() * 2 * Math.PI;
 

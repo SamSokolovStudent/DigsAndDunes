@@ -35,6 +35,7 @@ public class ModCreativeModeTab {
             event.accept(ModItems.STRIPPED_PALM_WOOD.get());
             event.accept(ModItems.PALM_LEAVES.get());
             event.accept(ModItems.PALM_HUSK.get());
+            event.accept(ModItems.DATE.get());
 
             event.accept(ModItems.PALM_PLANKS.get());
             event.accept(ModItems.PALM_SLAB.get());
@@ -53,6 +54,8 @@ public class ModCreativeModeTab {
             event.accept(ModItems.POTTED_PALM_SAPLING.get());
 
             event.accept(ModItems.DUNE_GRASS.get());
+
+            event.accept(ModItems.POTTERY_TABLE.get());
         }
     }
 

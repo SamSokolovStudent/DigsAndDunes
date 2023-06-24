@@ -5,7 +5,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerTy
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
-import net.soko.digs_and_dunes.common.worldgen.feature.generator.SpikyFoliagePlacer;
+import net.soko.digs_and_dunes.common.worldgen.feature.placer.SpikyFoliagePlacer;
 import net.soko.digs_and_dunes.core.DigsAndDunes;
 
 public class ModFoliagePlacerType {

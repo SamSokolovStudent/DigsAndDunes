@@ -1,4 +1,4 @@
-package net.soko.digs_and_dunes.common.worldgen.feature;
+package net.soko.digs_and_dunes.core.registry;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -12,7 +12,6 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.soko.digs_and_dunes.core.DigsAndDunes;
-import net.soko.digs_and_dunes.core.registry.ModBlocks;
 
 import java.util.List;
 

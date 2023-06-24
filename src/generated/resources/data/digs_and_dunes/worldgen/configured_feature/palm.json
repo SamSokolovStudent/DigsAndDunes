@@ -1,7 +1,12 @@
 {
   "type": "minecraft:tree",
   "config": {
-    "decorators": [],
+    "decorators": [
+      {
+        "type": "digs_and_dunes:date_decorator_placer_type",
+        "probability": 0.4
+      }
+    ],
     "dirt_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
@@ -35,7 +40,7 @@
     },
     "trunk_placer": {
       "type": "digs_and_dunes:arching_trunk_placer_type",
-      "base_height": 6,
+      "base_height": 7,
       "bend_length": {
         "type": "minecraft:uniform",
         "value": {

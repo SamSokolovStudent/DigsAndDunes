@@ -18,9 +18,10 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.soko.digs_and_dunes.common.block.ModFlammableRotatedPillarBlock;
-import net.soko.digs_and_dunes.common.block.ModTallGrassBlock;
-import net.soko.digs_and_dunes.common.block.PalmFrondBlock;
-import net.soko.digs_and_dunes.common.block.Quicksand;
+import net.soko.digs_and_dunes.common.block.custom.DateBlock;
+import net.soko.digs_and_dunes.common.block.custom.PotteryTableBlock;
+import net.soko.digs_and_dunes.common.block.custom.Quicksand;
+import net.soko.digs_and_dunes.common.block.custom.PalmFrondBlock;
 import net.soko.digs_and_dunes.common.worldgen.feature.generator.PalmTreeGrower;
 import net.soko.digs_and_dunes.core.DigsAndDunes;
 
@@ -65,29 +66,17 @@ public class ModBlocks {
             () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG)));
     public static final RegistryObject<Block> STRIPPED_PALM_WOOD = BLOCKS.register("stripped_palm_wood",
             () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD)));
+
     public static final RegistryObject<Block> PALM_HUSK = BLOCKS.register("palm_husk",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.MANGROVE_ROOTS).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> DATE = BLOCKS.register("date",
+            () -> new DateBlock(BlockBehaviour.Properties.copy(Blocks.COCOA)));
+
     public static final RegistryObject<Block> PALM_LEAVES = BLOCKS.register("palm_leaves",
             () -> new PalmFrondBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES).requiresCorrectToolForDrops()));
 
     public static final RegistryObject<Block> PALM_PLANKS = BLOCKS.register("palm_planks",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)){
-                @Override
-                public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return true;
-                }
-
-                @Override
-                public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return 5;
-                }
-
-                @Override
-                public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-                    return 20;
-                }
-            });
-
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
     public static final RegistryObject<Block> PALM_SLAB = BLOCKS.register("palm_slab",
             () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SLAB)));
     public static final RegistryObject<Block> PALM_STAIRS = BLOCKS.register("palm_stairs",
@@ -115,7 +104,7 @@ public class ModBlocks {
             () -> new WallHangingSignBlock(BlockBehaviour.Properties.of().forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).ignitedByLava().lootFrom(PALM_HANGING_SIGN), WoodType.OAK));
 
     public static final RegistryObject<Block> PALM_SAPLING = BLOCKS.register("palm_sapling",
-            () -> new SaplingBlock(new PalmTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)){
+            () -> new SaplingBlock(new PalmTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)) {
                 @Override
                 protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
                     return super.mayPlaceOn(pState, pLevel, pPos) || pState.is(BlockTags.SAND);
@@ -125,15 +114,18 @@ public class ModBlocks {
             () -> new FlowerPotBlock(null, PALM_SAPLING, BlockBehaviour.Properties.copy(Blocks.POTTED_OAK_SAPLING)));
 
     public static final RegistryObject<Block> DUNE_GRASS = BLOCKS.register("dune_grass",
-            () -> new ModTallGrassBlock(
-                    BlockBehaviour.Properties.of()
-                            .mapColor(MapColor.PLANT)
-                            .replaceable().noCollission()
-                            .instabreak()
-                            .sound(SoundType.GRASS)
-                            .offsetType(BlockBehaviour.OffsetType.XYZ)
-                            .ignitedByLava()
-                            .pushReaction(PushReaction.DESTROY)));
+            () -> new TallGrassBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).replaceable().noCollission().instabreak().sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XYZ).ignitedByLava().pushReaction(PushReaction.DESTROY)) {
+                @Override
+                protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
+                    return super.mayPlaceOn(pState, pLevel, pPos) || pState.is(BlockTags.SAND);
+                }
+            }
+    );
+
+    public static final RegistryObject<Block> POTTERY_TABLE = BLOCKS.register("pottery_table",
+            () -> new PotteryTableBlock(BlockBehaviour.Properties.copy(Blocks.CRAFTING_TABLE)));
+
+
 
 
 }

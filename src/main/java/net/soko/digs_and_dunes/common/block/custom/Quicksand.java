@@ -1,4 +1,4 @@
-package net.soko.digs_and_dunes.common.block;
+package net.soko.digs_and_dunes.common.block.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

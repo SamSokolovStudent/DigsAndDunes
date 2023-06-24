@@ -1,9 +1,19 @@
 package net.soko.digs_and_dunes.core.datagen;
 
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CocoaBlock;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.soko.digs_and_dunes.common.block.custom.DateBlock;
 import net.soko.digs_and_dunes.core.registry.ModBlocks;
 import net.minecraftforge.registries.RegistryObject;
 import net.soko.digs_and_dunes.core.registry.ModItems;
@@ -29,6 +39,10 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.STRIPPED_PALM_LOG.get());
         dropSelf(ModBlocks.STRIPPED_PALM_WOOD.get());
         dropSelf(ModBlocks.PALM_HUSK.get());
+        this.add(ModBlocks.DATE.get(), (block) -> {
+            return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(this.applyExplosionDecay(block, LootItem.lootTableItem(ModItems.DATE.get()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(3.0F)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DateBlock.AGE, 3)))))));
+        });
+
         dropSelf(ModBlocks.PALM_PLANKS.get());
         dropSelf(ModBlocks.PALM_DOOR.get());
         dropSelf(ModBlocks.PALM_TRAPDOOR.get());
@@ -40,6 +54,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.PALM_WALL_SIGN.get());
         dropSelf(ModBlocks.PALM_HANGING_SIGN.get());
         dropSelf(ModBlocks.PALM_WALL_HANGING_SIGN.get());
+
+        dropSelf(ModBlocks.POTTERY_TABLE.get());
 
         dropSelf(ModBlocks.PALM_SAPLING.get());
         this.dropPottedContents(ModBlocks.POTTED_PALM_SAPLING.get());

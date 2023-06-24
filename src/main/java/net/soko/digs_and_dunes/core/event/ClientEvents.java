@@ -2,19 +2,19 @@ package net.soko.digs_and_dunes.core.event;
 
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.client.renderer.FogRenderer;
-import net.minecraft.client.renderer.entity.FallingBlockRenderer;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.material.FogType;
-import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.ViewportEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.soko.digs_and_dunes.core.registry.ModEntities;
+import net.soko.digs_and_dunes.client.screen.PotteryTableScreen;
+import net.soko.digs_and_dunes.core.registry.ModMenuTypes;
 
 public class ClientEvents {
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
+        MenuScreens.register(ModMenuTypes.POTTERY_TABLE.get(), PotteryTableScreen::new);
     }
 
     public static void onRenderFog(ViewportEvent.RenderFog event) {

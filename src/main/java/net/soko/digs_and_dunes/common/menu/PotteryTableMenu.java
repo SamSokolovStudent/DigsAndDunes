@@ -16,6 +16,7 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 import net.soko.digs_and_dunes.core.DigsAndDunes;
 import net.soko.digs_and_dunes.core.registry.ModBlocks;
 import net.soko.digs_and_dunes.core.registry.ModItemTags;
@@ -83,7 +84,7 @@ public class PotteryTableMenu extends AbstractContainerMenu {
         this.dyeSlot = this.addSlot(new Slot(this.craftSlots, 1, 13, 44) {
             @Override
             public boolean mayPlace(ItemStack stack) {
-                return stack.getItem() instanceof DyeItem;
+                return stack.getItem() instanceof DyeItem && PotteryTableMenu.this.potOrClaySlot.getItem().is(Items.DECORATED_POT);
             }
 
             @Override
@@ -93,14 +94,17 @@ public class PotteryTableMenu extends AbstractContainerMenu {
 
             @Override
             public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
-                return Pair.of(InventoryMenu.BLOCK_ATLAS, EMPTY_DYES_SLOT);
+                if (PotteryTableMenu.this.potOrClaySlot.getItem().is(Items.DECORATED_POT)) {
+                    return Pair.of(InventoryMenu.BLOCK_ATLAS, EMPTY_DYES_SLOT);
+                }
+                return super.getNoItemIcon();
             }
         });
 
-        this.sherdSlot1 = this.addSlot(new Slot(this.craftSlots, 2, 101, 8) {
+        this.sherdSlot1 = this.addSlot(new Slot(this.craftSlots, 2, 98, 8) {
             @Override
             public boolean mayPlace(ItemStack stack) {
-                return stack.is(ItemTags.DECORATED_POT_INGREDIENTS);
+                return stack.is(ItemTags.DECORATED_POT_INGREDIENTS) && PotteryTableMenu.this.potOrClaySlot.getItem().is(Items.CLAY_BALL);
             }
 
             @Override
@@ -110,13 +114,16 @@ public class PotteryTableMenu extends AbstractContainerMenu {
 
             @Override
             public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
-                return Pair.of(InventoryMenu.BLOCK_ATLAS, EMPTY_SHERD_SLOT);
+                if (PotteryTableMenu.this.potOrClaySlot.getItem().is(Items.CLAY_BALL)) {
+                    return Pair.of(InventoryMenu.BLOCK_ATLAS, EMPTY_SHERD_SLOT);
+                }
+                return super.getNoItemIcon();
             }
         });
-        this.sherdSlot2 = this.addSlot(new Slot(this.craftSlots, 3, 101, 26) {
+        this.sherdSlot2 = this.addSlot(new Slot(this.craftSlots, 3, 98, 26) {
             @Override
             public boolean mayPlace(ItemStack stack) {
-                return stack.is(ItemTags.DECORATED_POT_INGREDIENTS);
+                return stack.is(ItemTags.DECORATED_POT_INGREDIENTS) && PotteryTableMenu.this.potOrClaySlot.getItem().is(Items.CLAY_BALL);
             }
 
             @Override
@@ -126,13 +133,16 @@ public class PotteryTableMenu extends AbstractContainerMenu {
 
             @Override
             public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
-                return Pair.of(InventoryMenu.BLOCK_ATLAS, EMPTY_SHERD_SLOT);
+                if (PotteryTableMenu.this.potOrClaySlot.getItem().is(Items.CLAY_BALL)) {
+                    return Pair.of(InventoryMenu.BLOCK_ATLAS, EMPTY_SHERD_SLOT);
+                }
+                return super.getNoItemIcon();
             }
         });
-        this.sherdSlot3 = this.addSlot(new Slot(this.craftSlots, 4, 101, 44) {
+        this.sherdSlot3 = this.addSlot(new Slot(this.craftSlots, 4, 98, 44) {
             @Override
             public boolean mayPlace(ItemStack stack) {
-                return stack.is(ItemTags.DECORATED_POT_INGREDIENTS);
+                return stack.is(ItemTags.DECORATED_POT_INGREDIENTS) && PotteryTableMenu.this.potOrClaySlot.getItem().is(Items.CLAY_BALL);
             }
 
             @Override
@@ -142,13 +152,16 @@ public class PotteryTableMenu extends AbstractContainerMenu {
 
             @Override
             public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
-                return Pair.of(InventoryMenu.BLOCK_ATLAS, EMPTY_SHERD_SLOT);
+                if (PotteryTableMenu.this.potOrClaySlot.getItem().is(Items.CLAY_BALL)) {
+                    return Pair.of(InventoryMenu.BLOCK_ATLAS, EMPTY_SHERD_SLOT);
+                }
+                return super.getNoItemIcon();
             }
         });
-        this.sherdSlot4 = this.addSlot(new Slot(this.craftSlots, 5, 101, 62) {
+        this.sherdSlot4 = this.addSlot(new Slot(this.craftSlots, 5, 98, 62) {
             @Override
             public boolean mayPlace(ItemStack stack) {
-                return stack.is(ItemTags.DECORATED_POT_INGREDIENTS);
+                return stack.is(ItemTags.DECORATED_POT_INGREDIENTS) && PotteryTableMenu.this.potOrClaySlot.getItem().is(Items.CLAY_BALL);
             }
 
             @Override
@@ -158,7 +171,10 @@ public class PotteryTableMenu extends AbstractContainerMenu {
 
             @Override
             public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
-                return Pair.of(InventoryMenu.BLOCK_ATLAS, EMPTY_SHERD_SLOT);
+                if (PotteryTableMenu.this.potOrClaySlot.getItem().is(Items.CLAY_BALL)) {
+                    return Pair.of(InventoryMenu.BLOCK_ATLAS, EMPTY_SHERD_SLOT);
+                }
+                return super.getNoItemIcon();
             }
         });
 

@@ -1,20 +1,25 @@
 package net.soko.digs_and_dunes.client.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.world.Container;
-import net.minecraft.world.ContainerListener;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerListener;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.DecoratedPotBlockEntity;
+import net.soko.digs_and_dunes.client.screen.component.GuiSliderButton;
 import net.soko.digs_and_dunes.common.menu.PotteryTableMenu;
 import net.soko.digs_and_dunes.core.DigsAndDunes;
 import org.jetbrains.annotations.NotNull;
@@ -27,11 +32,9 @@ public class PotteryTableScreen extends AbstractContainerScreen<PotteryTableMenu
     public static final ResourceLocation POTTERY_LOCATION = new ResourceLocation(DigsAndDunes.MOD_ID, "textures/gui/container/pottery_table.png");
     private static final Object[] NO_ARGS = new Object[0];
 
-    private static final int SCROLLER_WIDTH = 15;
-    private static final int SCROLLER_HEIGHT = 6;
-    private static final int SCROLLER_FULL_WIDTH = 67;
+    private static final int SCROLLER_WIDTH = 72;
+    private static final int SCROLLER_HEIGHT = 8;
     private float scrolOffs;
-    private boolean scrolling;
 
     private static final Component MISSING_POT_OR_CLAY = Component.translatable("screen." + DigsAndDunes.MOD_ID + ".pottery_table.missing_pot_or_clay", NO_ARGS).append("\n").append(Component.translatable("screen." + DigsAndDunes.MOD_ID + ".pottery_table.missing_pot_or_clay.tooltip", NO_ARGS).withStyle(ChatFormatting.GRAY));
     private static final Component MISSING_DYE = Component.translatable("screen." + DigsAndDunes.MOD_ID + ".pottery_table.missing_dye", NO_ARGS).append("\n").append(Component.translatable("screen." + DigsAndDunes.MOD_ID + ".pottery_table.missing_dye.tooltip", NO_ARGS).withStyle(ChatFormatting.GRAY));
@@ -49,7 +52,8 @@ public class PotteryTableScreen extends AbstractContainerScreen<PotteryTableMenu
     private boolean enableSherds;
     private boolean enableScrolling;
 
-    private ModelPart potPreview;
+    private DecoratedPotBlockEntity potEntity;
+    private GuiSliderButton sliderButton;
 
     public PotteryTableScreen(PotteryTableMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
@@ -61,10 +65,18 @@ public class PotteryTableScreen extends AbstractContainerScreen<PotteryTableMenu
     @Override
     protected void init() {
         super.init();
+        this.menu.addSlotListener(this);
         this.titleLabelX = 8;
         this.inventoryLabelY = 90;
+        this.potEntity = new DecoratedPotBlockEntity(BlockPos.ZERO, Blocks.DECORATED_POT.defaultBlockState());
+        sliderButton = addRenderableWidget(new GuiSliderButton(this.leftPos + 97, this.topPos + 81, SCROLLER_WIDTH, SCROLLER_HEIGHT));
     }
 
+    @Override
+    public void removed() {
+        super.removed();
+        this.menu.removeSlotListener(this);
+    }
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
@@ -76,6 +88,36 @@ public class PotteryTableScreen extends AbstractContainerScreen<PotteryTableMenu
 
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int mouseX, int mouseY) {
+        ItemStack potOrClayStack = this.menu.getInputSlot().getItem();
+        ItemStack dyeStack = this.menu.getDyeSlot().getItem();
+
+        if (potOrClayStack.isEmpty()) {
+            this.displayPot = false;
+            this.displayDye = true;
+            this.enableSherds = true;
+            this.sliderButton.active = false;
+            this.validRecipe = false;
+        } else if (potOrClayStack.is(Items.CLAY_BALL)) {
+            this.displayPot = true;
+            this.displayDye = false;
+            this.enableSherds = true;
+            this.sliderButton.active = true;
+        } else if (potOrClayStack.is(Blocks.DECORATED_POT.asItem())) {
+            this.displayPot = true;
+            this.displayDye = true;
+            this.enableSherds = false;
+            this.sliderButton.active = true;
+        }
+
+        if (potOrClayStack.is(Items.CLAY_BALL) && dyeStack.isEmpty()) {
+            this.validRecipe = true;
+        } else if (potOrClayStack.is(Blocks.DECORATED_POT.asItem()) && allSherdStacksEmpty() && !dyeStack.isEmpty()) {
+            this.validRecipe = true;
+        } else {
+            this.validRecipe = false;
+        }
+
+
         int i = this.leftPos;
         int j = this.topPos;
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
@@ -86,10 +128,15 @@ public class PotteryTableScreen extends AbstractContainerScreen<PotteryTableMenu
 
         guiGraphics.blit(POTTERY_LOCATION, x, y, 0, 0, this.imageWidth, this.imageHeight);
 
-//        InventoryScreen.renderEntityInInventory();
+        PoseStack poseStack = guiGraphics.pose();
+        poseStack.pushPose();
+        poseStack.mulPose(Axis.YP.rotationDegrees(sliderButton != null ? (float) (sliderButton.getProgress() * 360f) : 0));
+        poseStack.translate(i + 116, j + 12, 1);
+        poseStack.scale(3.25F, 3.25F, 1.0F);
+        guiGraphics.renderFakeItem(this.menu.getInputSlot().getItem(), 0, 0);
+        poseStack.popPose();
 
-        int k = (int) (52.0F * this.scrolOffs);
-        guiGraphics.blit(POTTERY_LOCATION, i + 101, j + 82 + k, 226 + (this.enableScrolling ? 0 : 15), 0, 15, 6);
+
         if (!validRecipe) {
             guiGraphics.blit(POTTERY_LOCATION, i + 36, j + 33, 176, 0, 26, 21);
         }
@@ -119,6 +166,16 @@ public class PotteryTableScreen extends AbstractContainerScreen<PotteryTableMenu
         return Collections.emptyList();
     }
 
+    @Override
+    public boolean mouseDragged(double pMouseX, double pMouseY, int pButton, double pDragX, double pDragY) {
+        for (GuiEventListener guiEventListener : children()) {
+            if (guiEventListener.mouseDragged(pMouseX, pMouseY, pButton, pDragX, pDragY)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private boolean allSherdStacksEmpty() {
         ItemStack sherdStack1 = this.menu.getSherdSlot1().getItem();
         ItemStack sherdStack2 = this.menu.getSherdSlot2().getItem();
@@ -128,56 +185,13 @@ public class PotteryTableScreen extends AbstractContainerScreen<PotteryTableMenu
         return sherdStack1.isEmpty() && sherdStack2.isEmpty() && sherdStack3.isEmpty() && sherdStack4.isEmpty();
     }
 
+    @Override
+    public void slotChanged(AbstractContainerMenu pContainerToSend, int pDataSlotIndex, ItemStack pStack) {
+
+    }
 
     @Override
-    public void containerChanged(Container pContainer) {
-        /*
-        if a pot is visible the scrollbar should be enabled
-
-        if there is clay inside stack 1, show a blank pot and disable dye slot, scrollbar enabled
-        if there is a pot inside stack 1, show that pot as is, enable the dye slot and disable the sherd slots, scrollbar enabled
-        if there no pot or clay, disable scrollbar, display no pot
-         */
-
-        ItemStack potOrClayStack = this.menu.getInputSlot().getItem();
-        ItemStack dyeStack = this.menu.getDyeSlot().getItem();
-        ItemStack sherdStack1 = this.menu.getSherdSlot1().getItem();
-        ItemStack sherdStack2 = this.menu.getSherdSlot2().getItem();
-        ItemStack sherdStack3 = this.menu.getSherdSlot3().getItem();
-        ItemStack sherdStack4 = this.menu.getSherdSlot4().getItem();
-
-        if (potOrClayStack.isEmpty()) {
-            this.displayPot = false;
-            this.displayDye = true;
-            this.enableSherds = true;
-            this.enableScrolling = false;
-            this.validRecipe = false;
-        } else if (potOrClayStack.is(Items.CLAY_BALL)) {
-            this.displayPot = true;
-            this.displayDye = false;
-            this.enableSherds = true;
-            this.enableScrolling = true;
-        } else if (potOrClayStack.is(Blocks.DECORATED_POT.asItem())) {
-            this.displayPot = true;
-            this.displayDye = true;
-            this.enableSherds = false;
-            this.enableScrolling = true;
-        }
-
-        if (potOrClayStack.is(Items.CLAY_BALL) && dyeStack.isEmpty()) {
-            this.validRecipe = true;
-        } else if (potOrClayStack.is(Blocks.DECORATED_POT.asItem()) && allSherdStacksEmpty() && !dyeStack.isEmpty()) {
-            this.validRecipe = true;
-        } else {
-            this.validRecipe = false;
-        }
-
-        this.potOrClayStack = potOrClayStack.copy();
-        this.dyeStack = dyeStack.copy();
-        this.sherd1Stack = sherdStack1.copy();
-        this.sherd2Stack = sherdStack2.copy();
-        this.sherd3Stack = sherdStack3.copy();
-        this.sherd4Stack = sherdStack4.copy();
+    public void dataChanged(AbstractContainerMenu pContainerMenu, int pDataSlotIndex, int pValue) {
 
     }
 }

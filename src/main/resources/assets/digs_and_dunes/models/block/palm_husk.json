@@ -2,6 +2,6 @@
   "parent": "minecraft:block/cube_column",
   "textures": {
     "end": "digs_and_dunes:block/palm_husk_top",
-    "side": "digs_and_dunes:block/palm_husk_side"
+    "side": "digs_and_dunes:block/palm_husk"
   }
 }

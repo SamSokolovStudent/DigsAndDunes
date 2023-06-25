@@ -26,6 +26,7 @@ import java.util.List;
 @Mixin(FallingBlock.class)
 public abstract class FallingBlockMixin {
 
+
     @Inject(method = "tick", at = @At(value = "HEAD"), cancellable = true)
     public void digsanddunes$onTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random, CallbackInfo ci) {
         if (world.isEmptyBlock(pos.below())) {

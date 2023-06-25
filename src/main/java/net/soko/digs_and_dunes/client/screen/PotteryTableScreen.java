@@ -8,13 +8,17 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerListener;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
@@ -23,6 +27,7 @@ import net.soko.digs_and_dunes.client.screen.component.GuiSliderButton;
 import net.soko.digs_and_dunes.common.menu.PotteryTableMenu;
 import net.soko.digs_and_dunes.core.DigsAndDunes;
 import org.jetbrains.annotations.NotNull;
+import org.joml.Matrix4f;
 
 import java.util.Collections;
 import java.util.List;
@@ -129,14 +134,25 @@ public class PotteryTableScreen extends AbstractContainerScreen<PotteryTableMenu
         guiGraphics.blit(POTTERY_LOCATION, x, y, 0, 0, this.imageWidth, this.imageHeight);
 
         PoseStack poseStack = guiGraphics.pose();
+
         poseStack.pushPose();
+
+        poseStack.translate(i + 142, j + 40, 100);
+        poseStack.mulPoseMatrix((new Matrix4f()).scaling(1.0F, -1.0F, 1.0F));
+
+        float scale = 4.0f * 16.0F;
+        poseStack.scale(scale, scale, scale);
+
+        poseStack.mulPose(Axis.XP.rotationDegrees(30));
         poseStack.mulPose(Axis.YP.rotationDegrees(sliderButton != null ? (float) (sliderButton.getProgress() * 360f) : 0));
-        poseStack.translate(i + 116, j + 12, 1);
-        poseStack.scale(3.25F, 3.25F, 1.0F);
-        guiGraphics.renderFakeItem(this.menu.getInputSlot().getItem(), 0, 0);
+
+        ItemStack renderItem = this.menu.getInputSlot().getItem();
+        BakedModel bakedmodel = this.minecraft.getItemRenderer().getModel(renderItem, null, null, 0);
+
+        this.minecraft.getItemRenderer().render(this.menu.getInputSlot().getItem(), ItemDisplayContext.FIXED, false, poseStack, guiGraphics.bufferSource(), 15728880, OverlayTexture.NO_OVERLAY, bakedmodel);
+
         poseStack.popPose();
-
-
+        
         if (!validRecipe) {
             guiGraphics.blit(POTTERY_LOCATION, i + 36, j + 33, 176, 0, 26, 21);
         }

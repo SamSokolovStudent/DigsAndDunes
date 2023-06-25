@@ -31,6 +31,7 @@ public class PotteryTableMenu extends AbstractContainerMenu {
     public static final ResourceLocation EMPTY_POT_OR_CLAY_SLOT = new ResourceLocation(DigsAndDunes.MOD_ID, "item/empty_pot_or_clay_slot");
     public static final ResourceLocation EMPTY_DYES_SLOT = new ResourceLocation(DigsAndDunes.MOD_ID, "item/empty_dyes_slot");
     public static final ResourceLocation EMPTY_SHERD_SLOT = new ResourceLocation(DigsAndDunes.MOD_ID, "item/empty_sherd_slot");
+    public static final ResourceLocation BLOCKED_SLOT = new ResourceLocation(DigsAndDunes.MOD_ID, "item/empty_slot");
 
     private static final QuickMoveHelper MOVE_HELPER = new QuickMoveHelper().
             add(0, 7, 7, 36, true). // to Inventory
@@ -96,8 +97,9 @@ public class PotteryTableMenu extends AbstractContainerMenu {
             public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
                 if (PotteryTableMenu.this.potOrClaySlot.getItem().is(Items.DECORATED_POT)) {
                     return Pair.of(InventoryMenu.BLOCK_ATLAS, EMPTY_DYES_SLOT);
+                } else {
+                    return Pair.of(InventoryMenu.BLOCK_ATLAS, BLOCKED_SLOT);
                 }
-                return super.getNoItemIcon();
             }
         });
 
@@ -116,8 +118,9 @@ public class PotteryTableMenu extends AbstractContainerMenu {
             public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
                 if (PotteryTableMenu.this.potOrClaySlot.getItem().is(Items.CLAY_BALL)) {
                     return Pair.of(InventoryMenu.BLOCK_ATLAS, EMPTY_SHERD_SLOT);
+                } else {
+                    return Pair.of(InventoryMenu.BLOCK_ATLAS, BLOCKED_SLOT);
                 }
-                return super.getNoItemIcon();
             }
         });
         this.sherdSlot2 = this.addSlot(new Slot(this.craftSlots, 3, 98, 26) {
@@ -135,8 +138,9 @@ public class PotteryTableMenu extends AbstractContainerMenu {
             public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
                 if (PotteryTableMenu.this.potOrClaySlot.getItem().is(Items.CLAY_BALL)) {
                     return Pair.of(InventoryMenu.BLOCK_ATLAS, EMPTY_SHERD_SLOT);
+                } else {
+                    return Pair.of(InventoryMenu.BLOCK_ATLAS, BLOCKED_SLOT);
                 }
-                return super.getNoItemIcon();
             }
         });
         this.sherdSlot3 = this.addSlot(new Slot(this.craftSlots, 4, 98, 44) {
@@ -154,8 +158,9 @@ public class PotteryTableMenu extends AbstractContainerMenu {
             public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
                 if (PotteryTableMenu.this.potOrClaySlot.getItem().is(Items.CLAY_BALL)) {
                     return Pair.of(InventoryMenu.BLOCK_ATLAS, EMPTY_SHERD_SLOT);
+                } else {
+                    return Pair.of(InventoryMenu.BLOCK_ATLAS, BLOCKED_SLOT);
                 }
-                return super.getNoItemIcon();
             }
         });
         this.sherdSlot4 = this.addSlot(new Slot(this.craftSlots, 5, 98, 62) {
@@ -173,8 +178,9 @@ public class PotteryTableMenu extends AbstractContainerMenu {
             public Pair<ResourceLocation, ResourceLocation> getNoItemIcon() {
                 if (PotteryTableMenu.this.potOrClaySlot.getItem().is(Items.CLAY_BALL)) {
                     return Pair.of(InventoryMenu.BLOCK_ATLAS, EMPTY_SHERD_SLOT);
+                } else {
+                    return Pair.of(InventoryMenu.BLOCK_ATLAS, BLOCKED_SLOT);
                 }
-                return super.getNoItemIcon();
             }
         });
 

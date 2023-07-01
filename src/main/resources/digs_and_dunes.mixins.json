@@ -4,13 +4,18 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "digs_and_dunes.refmap.json",
   "mixins": [
-    "BrushableBlockMixin",
-    "FallingBlockMixin",
-    "FogTypeMixin"
+    "block.BrushableBlockMixin",
+    "block.FallingBlockMixin",
+    "block.ShulkerBoxBlockMixin",
+    "entity.SheepMixin",
+    "entity.ShulkerMixin",
+    "enummixins.DyeColorMixin",
+    "enummixins.FogTypeMixin"
   ],
   "client": [
-    "CameraMixin",
-    "FogRendererMixin"
+    "client.CameraMixin",
+    "client.FogRendererMixin",
+    "client.SheetsMixin"
   ],
   "minVersion": "0.8.5"
 }

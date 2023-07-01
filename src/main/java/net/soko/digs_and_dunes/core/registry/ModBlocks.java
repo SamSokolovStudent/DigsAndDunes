@@ -1,9 +1,9 @@
 package net.soko.digs_and_dunes.core.registry;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -19,11 +19,12 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.soko.digs_and_dunes.common.block.ModFlammableRotatedPillarBlock;
 import net.soko.digs_and_dunes.common.block.custom.DateBlock;
+import net.soko.digs_and_dunes.common.block.custom.PalmFrondBlock;
 import net.soko.digs_and_dunes.common.block.custom.PotteryTableBlock;
 import net.soko.digs_and_dunes.common.block.custom.Quicksand;
-import net.soko.digs_and_dunes.common.block.custom.PalmFrondBlock;
 import net.soko.digs_and_dunes.common.worldgen.feature.generator.PalmTreeGrower;
 import net.soko.digs_and_dunes.core.DigsAndDunes;
+import net.soko.digs_and_dunes.util.ModDyeColors;
 
 public class ModBlocks {
 
@@ -125,7 +126,54 @@ public class ModBlocks {
     public static final RegistryObject<Block> POTTERY_TABLE = BLOCKS.register("pottery_table",
             () -> new PotteryTableBlock(BlockBehaviour.Properties.copy(Blocks.CRAFTING_TABLE)));
 
+    public static final RegistryObject<Block> MAROON_WOOL = BLOCKS.register("maroon_wool",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
+    public static final RegistryObject<Block> MAROON_CARPET = BLOCKS.register("maroon_carpet",
+            () -> new CarpetBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CARPET)));
+//    public static final RegistryObject<Block> MAROON_BED = BLOCKS.register("maroon_bed",
+//            () -> new BedBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_BED), DyeColor.RED));
+//    public static final RegistryObject<Block> MAROON_BANNER = BLOCKS.register("maroon_banner",
+//            () -> new BannerBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_BANNER), DyeColor.RED));
+//    public static final RegistryObject<Block> MAROON_WALL_BANNER = BLOCKS.register("maroon_wall_banner",
+//            () -> new WallBannerBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WALL_BANNER), DyeColor.RED));
+    public static final RegistryObject<Block> MAROON_SHULKER_BOX = BLOCKS.register("maroon_shulker_box",
+            () -> new ShulkerBoxBlock(ModDyeColors.digsAndDunes$MAROON, BlockBehaviour.Properties.copy(Blocks.SHULKER_BOX)));
+//    public static final RegistryObject<Block> MAROON_GLAZED_TERRACOTTA = BLOCKS.register("maroon_glazed_terracotta",
+//            () -> new GlazedTerracottaBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_GLAZED_TERRACOTTA)));
+    public static final RegistryObject<Block> MAROON_CONCRETE = BLOCKS.register("maroon_concrete",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE).mapColor(MapColor.COLOR_MAGENTA)));
+    public static final RegistryObject<Block> MAROON_CONCRETE_POWDER = BLOCKS.register("maroon_concrete_powder",
+            () -> new ConcretePowderBlock(MAROON_CONCRETE.get(), BlockBehaviour.Properties.of().mapColor(DyeColor.valueOf("digsAndDunes$MAROON")).instrument(NoteBlockInstrument.SNARE).strength(0.5F).sound(SoundType.SAND)));
+    public static final RegistryObject<Block> MAROON_STAINED_GLASS = BLOCKS.register("maroon_stained_glass",
+            () -> new StainedGlassBlock(ModDyeColors.digsAndDunes$MAROON, BlockBehaviour.Properties.copy(Blocks.WHITE_STAINED_GLASS)));
+    public static final RegistryObject<Block> MAROON_STAINED_GLASS_PANE = BLOCKS.register("maroon_stained_glass_pane",
+            () -> new StainedGlassPaneBlock(DyeColor.valueOf("digsAndDunes$MAROON"), BlockBehaviour.Properties.copy(Blocks.WHITE_STAINED_GLASS_PANE)));
+    public static final RegistryObject<Block> MAROON_TERRACOTTA = BLOCKS.register("maroon_terracotta",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.WHITE_TERRACOTTA)));
 
-
+    public static final RegistryObject<Block> OCHRE_WOOL = BLOCKS.register("ochre_wool",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
+    public static final RegistryObject<Block> OCHRE_CARPET = BLOCKS.register("ochre_carpet",
+            () -> new CarpetBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_CARPET)));
+//  public static final RegistryObject<Block> OCHRE_BED = BLOCKS.register("ochre_bed",
+//        () -> new BedBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_BED), DyeColor.ORANGE));
+//  public static final RegistryObject<Block> OCHRE_BANNER = BLOCKS.register("ochre_banner",
+//        () -> new BannerBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_BANNER), DyeColor.ORANGE));
+//  public static final RegistryObject<Block> OCHRE_WALL_BANNER = BLOCKS.register("ochre_wall_banner",
+//        () -> new WallBannerBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WALL_BANNER), DyeColor.ORANGE));
+    public static final RegistryObject<Block> OCHRE_SHULKER_BOX = BLOCKS.register("ochre_shulker_box",
+            () -> new ShulkerBoxBlock(DyeColor.valueOf("digsAndDunes$OCHRE"), BlockBehaviour.Properties.copy(Blocks.SHULKER_BOX)));
+//     public static final RegistryObject<Block> OCHRE_GLAZED_TERRACOTTA = BLOCKS.register("ochre_glazed_terracotta",
+//        () -> new GlazedTerracottaBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_GLAZED_TERRACOTTA)));
+    public static final RegistryObject<Block> OCHRE_CONCRETE = BLOCKS.register("ochre_concrete",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.WHITE_CONCRETE).mapColor(MapColor.COLOR_ORANGE)));
+    public static final RegistryObject<Block> OCHRE_CONCRETE_POWDER = BLOCKS.register("ochre_concrete_powder",
+            () -> new ConcretePowderBlock(OCHRE_CONCRETE.get(), BlockBehaviour.Properties.of().mapColor(DyeColor.valueOf("digsAndDunes$OCHRE")).instrument(NoteBlockInstrument.SNARE).strength(0.5F).sound(SoundType.SAND)));
+    public static final RegistryObject<Block> OCHRE_STAINED_GLASS = BLOCKS.register("ochre_stained_glass",
+            () -> new StainedGlassBlock(DyeColor.valueOf("digsAndDunes$OCHRE"), BlockBehaviour.Properties.copy(Blocks.WHITE_STAINED_GLASS)));
+    public static final RegistryObject<Block> OCHRE_STAINED_GLASS_PANE = BLOCKS.register("ochre_stained_glass_pane",
+            () -> new StainedGlassPaneBlock(DyeColor.valueOf("digsAndDunes$OCHRE"), BlockBehaviour.Properties.copy(Blocks.WHITE_STAINED_GLASS_PANE)));
+    public static final RegistryObject<Block> OCHRE_TERRACOTTA = BLOCKS.register("ochre_terracotta",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.WHITE_TERRACOTTA)));
 
 }

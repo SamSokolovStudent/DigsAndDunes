@@ -9,9 +9,37 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.soko.digs_and_dunes.core.event.CommonEvents;
 import net.soko.digs_and_dunes.core.registry.*;
+import net.soko.digs_and_dunes.util.ModDyeColors;
 import org.slf4j.Logger;
 
-// The value here should match an entry in the META-INF/mods.toml file
+///*TODO: Add a config file, fix dumbass 3rd person brush animation
+//Add DyeColor enum?
+//Dyes:
+//- Ochre
+//- Maroon
+//VANILLA:
+//Wool,
+//Carpet,
+//Concrete,
+//Concrete Powder,
+//Terracotta,
+//Glazed Terracotta,
+//Stained Glass,
+//Stained Glass Panes,
+//Beds,
+//Banners,
+//Banner Patterns,
+//Shulker Boxes,
+//Sign Text,
+//Firework Stars,
+//and Leather Armor
+//
+//DIGS AND DUNES:
+//Glazed Pots,
+//Braided Carpet (All colors) (Wool too?) (Wool + String, would be a good use for Flax),
+//
+//
+// */
 @Mod(DigsAndDunes.MOD_ID)
 public class DigsAndDunes {
     public static final String MOD_ID = "digs_and_dunes";
@@ -32,6 +60,8 @@ public class DigsAndDunes {
         ModFoliagePlacerType.FOLIAGE_PLACERS.register(modEventBus);
         ModDecoratorPlacerType.DECORATOR_PLACERS.register(modEventBus);
         ModMenuTypes.MENUS.register(modEventBus);
+
+        ModDyeColors.init();
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(ModCreativeModeTab::buildContents);

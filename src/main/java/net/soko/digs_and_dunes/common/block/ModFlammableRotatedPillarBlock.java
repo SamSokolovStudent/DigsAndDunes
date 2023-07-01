@@ -16,8 +16,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.soko.digs_and_dunes.core.registry.ModBlocks;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Optional;
-
 public class ModFlammableRotatedPillarBlock extends RotatedPillarBlock {
     public ModFlammableRotatedPillarBlock(Properties properties) {
         super(properties);

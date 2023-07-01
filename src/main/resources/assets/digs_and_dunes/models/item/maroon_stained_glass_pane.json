@@ -1,0 +1,7 @@
+{
+  "render_type": "translucent",
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "digs_and_dunes:block/maroon_stained_glass"
+  }
+}

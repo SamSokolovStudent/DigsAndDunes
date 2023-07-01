@@ -5,9 +5,9 @@ import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
+import net.soko.digs_and_dunes.core.DigsAndDunes;
 import net.soko.digs_and_dunes.core.registry.ModConfiguredFeatures;
 import net.soko.digs_and_dunes.core.registry.ModPlacedFeatures;
-import net.soko.digs_and_dunes.core.DigsAndDunes;
 
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;

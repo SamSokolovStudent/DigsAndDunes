@@ -4,8 +4,6 @@ import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CocoaBlock;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.soko.digs_and_dunes.common.block.custom.DateBlock;
@@ -13,7 +11,6 @@ import net.soko.digs_and_dunes.core.registry.ModBlocks;
 import net.soko.digs_and_dunes.core.registry.ModDecoratorPlacerType;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Comparator;
 import java.util.List;
 
 public class DateDecorator extends TreeDecorator {

@@ -1,10 +1,8 @@
-package net.soko.digs_and_dunes.mixins;
+package net.soko.digs_and_dunes.mixins.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.FogRenderer;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.material.FogType;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -18,13 +16,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class FogRendererMixin {
 
 
-    @Shadow private static float fogRed;
+    @Shadow
+    private static float fogRed;
 
-    @Shadow private static float fogBlue;
+    @Shadow
+    private static float fogBlue;
 
-    @Shadow private static float fogGreen;
+    @Shadow
+    private static float fogGreen;
 
-    @Shadow private static long biomeChangedTime;
+    @Shadow
+    private static long biomeChangedTime;
 
     @Inject(method = "setupColor", at = @At(value = "HEAD"), cancellable = true)
     private static void digsanddunes$onSetupColor(Camera pActiveRenderInfo, float pPartialTicks, ClientLevel pLevel, int pRenderDistanceChunks, float pBossColorModifier, CallbackInfo ci) {

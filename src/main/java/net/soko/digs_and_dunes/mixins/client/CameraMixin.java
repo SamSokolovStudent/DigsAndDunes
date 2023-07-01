@@ -1,4 +1,4 @@
-package net.soko.digs_and_dunes.mixins;
+package net.soko.digs_and_dunes.mixins.client;
 
 import net.minecraft.client.Camera;
 import net.minecraft.core.BlockPos;
@@ -14,7 +14,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import java.util.Iterator;
-import java.util.List;
 
 @Mixin(Camera.class)
 public class CameraMixin {

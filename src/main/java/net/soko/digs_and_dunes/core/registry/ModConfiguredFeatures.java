@@ -17,7 +17,6 @@ import net.soko.digs_and_dunes.common.worldgen.feature.decorator.DateDecorator;
 import net.soko.digs_and_dunes.common.worldgen.feature.placer.ArchingTrunkPlacer;
 import net.soko.digs_and_dunes.common.worldgen.feature.placer.SpikyFoliagePlacer;
 import net.soko.digs_and_dunes.core.DigsAndDunes;
-import net.soko.digs_and_dunes.core.registry.ModBlocks;
 
 public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> PALM_KEY = registerKey("palm");

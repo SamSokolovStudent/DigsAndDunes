@@ -68,12 +68,49 @@ public class ModItems {
 
     public static final RegistryObject<Item> PALM_SAPLING = ITEMS.register("palm_sapling",
             () -> new BlockItem(ModBlocks.PALM_SAPLING.get(), new Item.Properties()));
-    public static final RegistryObject<Item> POTTED_PALM_SAPLING = ITEMS.register("potted_palm_sapling",
-            () -> new BlockItem(ModBlocks.POTTED_PALM_SAPLING.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> DUNE_GRASS = ITEMS.register("dune_grass",
             () -> new BlockItem(ModBlocks.DUNE_GRASS.get(), new Item.Properties()));
 
-    public static final RegistryObject<Item> POTTERY_TABLE = ITEMS.register("dune_grass_block",
+    public static final RegistryObject<Item> POTTERY_TABLE = ITEMS.register("pottery_table",
             () -> new BlockItem(ModBlocks.POTTERY_TABLE.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> MAROON_DYE = ITEMS.register("maroon_dye",
+            () -> new DyeItem(DyeColor.valueOf("digsAndDunes$MAROON"), new Item.Properties()));
+    public static final RegistryObject<Item> MAROON_WOOL = ITEMS.register("maroon_wool",
+            () -> new BlockItem(ModBlocks.MAROON_WOOL.get(), new Item.Properties()));
+    public static final RegistryObject<Item> MAROON_CARPET = ITEMS.register("maroon_carpet",
+            () -> new BlockItem(ModBlocks.MAROON_CARPET.get(), new Item.Properties()));
+    public static final RegistryObject<Item> MAROON_CONCRETE = ITEMS.register("maroon_concrete",
+            () -> new BlockItem(ModBlocks.MAROON_CONCRETE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> MAROON_CONCRETE_POWDER = ITEMS.register("maroon_concrete_powder",
+            () -> new BlockItem(ModBlocks.MAROON_CONCRETE_POWDER.get(), new Item.Properties()));
+    public static final RegistryObject<Item> MAROON_TERRACOTTA = ITEMS.register("maroon_terracotta",
+            () -> new BlockItem(ModBlocks.MAROON_TERRACOTTA.get(), new Item.Properties()));
+    public static final RegistryObject<Item> MAROON_STAINED_GLASS = ITEMS.register("maroon_stained_glass",
+            () -> new BlockItem(ModBlocks.MAROON_STAINED_GLASS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> MAROON_STAINED_GLASS_PANE = ITEMS.register("maroon_stained_glass_pane",
+            () -> new BlockItem(ModBlocks.MAROON_STAINED_GLASS_PANE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> MAROON_SHULKER_BOX = ITEMS.register("maroon_shulker_box",
+            () -> new BlockItem(ModBlocks.MAROON_SHULKER_BOX.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> OCHRE_DYE = ITEMS.register("ochre_dye",
+            () -> new DyeItem(DyeColor.valueOf("digsAndDunes$OCHRE"), new Item.Properties()));
+    public static final RegistryObject<Item> OCHRE_WOOL = ITEMS.register("ochre_wool",
+            () -> new BlockItem(ModBlocks.OCHRE_WOOL.get(), new Item.Properties()));
+    public static final RegistryObject<Item> OCHRE_CARPET = ITEMS.register("ochre_carpet",
+            () -> new BlockItem(ModBlocks.OCHRE_CARPET.get(), new Item.Properties()));
+    public static final RegistryObject<Item> OCHRE_CONCRETE = ITEMS.register("ochre_concrete",
+            () -> new BlockItem(ModBlocks.OCHRE_CONCRETE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> OCHRE_CONCRETE_POWDER = ITEMS.register("ochre_concrete_powder",
+            () -> new BlockItem(ModBlocks.OCHRE_CONCRETE_POWDER.get(), new Item.Properties()));
+    public static final RegistryObject<Item> OCHRE_TERRACOTTA = ITEMS.register("ochre_terracotta",
+            () -> new BlockItem(ModBlocks.OCHRE_TERRACOTTA.get(), new Item.Properties()));
+    public static final RegistryObject<Item> OCHRE_STAINED_GLASS = ITEMS.register("ochre_stained_glass",
+            () -> new BlockItem(ModBlocks.OCHRE_STAINED_GLASS.get(), new Item.Properties()));
+    public static final RegistryObject<Item> OCHRE_STAINED_GLASS_PANE = ITEMS.register("ochre_stained_glass_pane",
+            () -> new BlockItem(ModBlocks.OCHRE_STAINED_GLASS_PANE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> OCHRE_SHULKER_BOX = ITEMS.register("ochre_shulker_box",
+            () -> new BlockItem(ModBlocks.OCHRE_SHULKER_BOX.get(), new Item.Properties()));
+
 }

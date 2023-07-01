@@ -1,4 +1,4 @@
-package net.soko.digs_and_dunes.mixins;
+package net.soko.digs_and_dunes.mixins.block;
 
 import com.ibm.icu.impl.Pair;
 import net.minecraft.core.BlockPos;

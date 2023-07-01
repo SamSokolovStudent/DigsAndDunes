@@ -1,4 +1,4 @@
-package net.soko.digs_and_dunes.mixins;
+package net.soko.digs_and_dunes.mixins.enummixins;
 
 import net.minecraft.world.level.material.FogType;
 import org.spongepowered.asm.mixin.Final;

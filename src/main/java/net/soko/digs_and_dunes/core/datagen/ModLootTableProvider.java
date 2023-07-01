@@ -12,9 +12,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class ModLootTableProvider {
-    public static LootTableProvider create(PackOutput output) {
-        return new LootTableProvider(output, Set.of(),
-                List.of(new LootTableProvider.SubProviderEntry(ModBlockLootTables::new, LootContextParamSets.BLOCK)));
+public class ModLootTableProvider extends LootTableProvider {
+    public ModLootTableProvider(PackOutput pOutput, Set<ResourceLocation> pRequiredTables) {
+        super(pOutput, pRequiredTables, List.of(
+                new LootTableProvider.SubProviderEntry(ModBlockLootTables::new, LootContextParamSets.BLOCK)));
+//        super(pOutput, pRequiredTables, List.of(
+//                new LootTableProvider.SubProviderEntry(ModBlockLootTables::new, LootContextParamSets.BLOCK),
+//                new LootTableProvider.SubProviderEntry(ModEntityLootTables::new, LootContextParamSets.ENTITY)));
+    }
+
+    @Override
+    protected void validate(@NotNull Map<ResourceLocation, LootTable> map, @NotNull ValidationContext validationcontext) {
     }
 }

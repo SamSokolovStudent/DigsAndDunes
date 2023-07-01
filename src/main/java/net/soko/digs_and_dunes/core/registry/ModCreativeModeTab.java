@@ -51,11 +51,30 @@ public class ModCreativeModeTab {
             event.accept(ModItems.PALM_HANGING_SIGN.get());
 
             event.accept(ModItems.PALM_SAPLING.get());
-            event.accept(ModItems.POTTED_PALM_SAPLING.get());
 
             event.accept(ModItems.DUNE_GRASS.get());
 
             event.accept(ModItems.POTTERY_TABLE.get());
+
+            event.accept(ModItems.MAROON_DYE.get());
+            event.accept(ModItems.MAROON_WOOL.get());
+            event.accept(ModItems.MAROON_CARPET.get());
+            event.accept(ModItems.MAROON_CONCRETE.get());
+            event.accept(ModItems.MAROON_CONCRETE_POWDER.get());
+            event.accept(ModItems.MAROON_TERRACOTTA.get());
+            event.accept(ModItems.MAROON_STAINED_GLASS.get());
+            event.accept(ModItems.MAROON_STAINED_GLASS_PANE.get());
+            event.accept(ModItems.MAROON_SHULKER_BOX.get());
+
+            event.accept(ModItems.OCHRE_DYE.get());
+            event.accept(ModItems.OCHRE_WOOL.get());
+            event.accept(ModItems.OCHRE_CARPET.get());
+            event.accept(ModItems.OCHRE_CONCRETE.get());
+            event.accept(ModItems.OCHRE_CONCRETE_POWDER.get());
+            event.accept(ModItems.OCHRE_TERRACOTTA.get());
+            event.accept(ModItems.OCHRE_STAINED_GLASS.get());
+            event.accept(ModItems.OCHRE_STAINED_GLASS_PANE.get());
+            event.accept(ModItems.OCHRE_SHULKER_BOX.get());
         }
     }
 
